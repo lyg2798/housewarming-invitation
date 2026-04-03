@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>집들이 초대장 | 진우 & 수진</title>
+
+<!-- Open Graph / KakaoTalk Preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="집들이에 초대합니다">
+<meta property="og:description" content="진우 & 수진 | 2026년 4월 4일 토요일 오후 5시 · 선사현대아파트">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="집들이에 초대합니다">
+<meta name="twitter:description" content="진우 & 수진 | 2026년 4월 4일 토요일 오후 5시 · 선사현대아파트">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80">
+
+<!-- KakaoTalk specific -->
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="400">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  :root {
+    --gold: #9CA0A6;
+    --gold-light: #C0C4CA;
+    --gold-pale: #E8EAED;
+    --cream: #F5F6F8;
+    --dark: #1E2128;
+    --warm-gray: #6B7080;
+    --blush: #E2E4E9;
+  }
+
+  body {
+    font-family: 'Gowun Batang', 'Noto Serif KR', serif;
+    background: linear-gradient(135deg, #14161a 0%, #1E2128 50%, #14161a 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* ===== ENVELOPE SCENE ===== */
+  .envelope-scene {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: linear-gradient(135deg, #14161a 0%, #1E2128 50%, #14161a 100%);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .envelope-scene.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+    perspective: 1200px;
+    animation: floatIn 1.2s ease-out forwards;
+  }
+
+  @keyframes floatIn {
+    0% { opacity: 0; transform: translateY(60px) scale(0.8); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .tap-hint {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-light);
+    font-size: 13px;
+    letter-spacing: 3px;
+    animation: pulse 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #CDBEA4 0%, #C2B196 50%, #B8A88C 100%);
+    border-radius: 3px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .envelope-side-left,
+  .envelope-side-right {
+    position: absolute;
+    top: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+  }
+
+  .envelope-side-left {
+    background: linear-gradient(145deg, #F0E4D0 0%, #E6D8C0 40%, #DDD0B8 100%);
+    clip-path: polygon(0 0, 50% 50%, 0 100%);
+    filter: drop-shadow(2px 0 3px rgba(139,116,78,0.12));
+  }
+
+  .envelope-side-right {
+    background: linear-gradient(215deg, #EEE2CC 0%, #E4D6BC 40%, #DBCdb4 100%);
+    clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    filter: drop-shadow(-2px 0 3px rgba(139,116,78,0.12));
+  }
+
+  .envelope-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100%;
+    background: linear-gradient(to top, #F2E8D8 0%, #EBE0CE 30%, #E5D9C6 100%);
+    clip-path: path('M0 200 L130 95 Q150 82 170 95 L300 200 Z');
+    z-index: 3;
+    filter: drop-shadow(0 -2px 5px rgba(139,116,78,0.15));
+  }
+
+  .seal {
+    position: absolute;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at 35% 35%, #D0D4DA, #8A8E96);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.3);
+  }
+
+  .seal span {
+    color: #FDF8F0;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Noto Serif KR', serif;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .envelope-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 4;
+    transform-origin: top center;
+    transition: transform 1.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform-style: flat;
+  }
+
+  .envelope-flap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, #F8F2E8 0%, #F0E8DA 25%, #E6DCCB 60%, #D8CCB4 100%);
+    clip-path: path('M0 0 L300 0 Q265 70 150 120 Q35 70 0 0 Z');
+    filter: drop-shadow(0 3px 3px rgba(80,60,30,0.35)) drop-shadow(0 6px 12px rgba(80,60,30,0.2));
+  }
+
+  .envelope-flap::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(70,75,85,0.4) 100%);
+    clip-path: path('M0 0 L300 0 Q265 70 150 120 Q35 70 0 0 Z');
+    -webkit-mask: linear-gradient(180deg, transparent 40%, black 85%, black 100%);
+    mask: linear-gradient(180deg, transparent 40%, black 85%, black 100%);
+  }
+
+  .envelope-flap.open { transform: rotateX(180deg); }
+
+  .letter-preview {
+    position: absolute;
+    width: 85%; height: 70%;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 2px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  .letter-preview .letter-text {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 6px;
+  }
+
+  .letter-preview .letter-sub {
+    color: var(--warm-gray);
+    font-size: 11px;
+    margin-top: 8px;
+    letter-spacing: 2px;
+  }
+
+  .letter-preview.rise {
+    transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translate(-50%, -220%);
+  }
+
+  /* ===== INVITATION CARD ===== */
+  .invitation-container {
+    width: 100%;
+    max-width: 460px;
+    background: var(--cream);
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+    overflow: hidden;
+  }
+
+  .invitation-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .invitation-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== SCROLL FADE-IN ===== */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section {
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 5%, var(--gold-pale) 30%, var(--gold-light) 50%, var(--gold-pale) 70%, transparent 95%);
+    opacity: 0.6;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 60px 30px 50px;
+    background: linear-gradient(180deg, #F5F6F8 0%, #EDEEF2 100%);
+    border-top: 6px solid;
+    border-image: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent) 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero .corner-deco {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0.15;
+  }
+
+  .hero .corner-deco.tl { top: 12px; left: 12px; }
+  .hero .corner-deco.tr { top: 12px; right: 12px; transform: scaleX(-1); }
+  .hero .corner-deco.bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+  .hero .corner-deco.br { bottom: 12px; right: 12px; transform: scale(-1, -1); }
+
+  .hero .label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+  .hero .main-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .hero .main-title em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .hero .house-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--gold-light);
+  }
+
+  .ornament .line {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .ornament .diamond {
+    width: 6px; height: 6px;
+    background: var(--gold-light);
+    transform: rotate(45deg);
+  }
+
+  /* ===== GREETING ===== */
+  .greeting {
+    background: #fff;
+    padding: 50px 30px;
+  }
+
+  .greeting p {
+    font-size: 15px;
+    line-height: 2.2;
+    color: #3E4250;
+    word-break: keep-all;
+  }
+
+  /* ===== NAMES SECTION ===== */
+  .names-section {
+    background: linear-gradient(180deg, #fff 0%, #EDEEF2 100%);
+    padding: 50px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .names-frame {
+    position: relative;
+    padding: 30px 20px;
+    margin: 0 -10px;
+  }
+
+  .names-frame::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 1px solid var(--gold-pale);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(245,246,248,0.5), rgba(232,234,237,0.2));
+    box-shadow: inset 0 2px 20px rgba(156,160,166,0.06);
+  }
+
+  .names-frame .frame-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+  }
+
+  .names-frame .frame-corner::before,
+  .names-frame .frame-corner::after {
+    content: '';
+    position: absolute;
+    background: var(--gold-light);
+  }
+
+  .names-frame .frame-corner::before {
+    width: 20px; height: 1px;
+  }
+
+  .names-frame .frame-corner::after {
+    width: 1px; height: 20px;
+  }
+
+  .names-frame .fc-tl { top: -1px; left: -1px; }
+  .names-frame .fc-tl::before { top: 0; left: 0; }
+  .names-frame .fc-tl::after { top: 0; left: 0; }
+
+  .names-frame .fc-tr { top: -1px; right: -1px; }
+  .names-frame .fc-tr::before { top: 0; right: 0; }
+  .names-frame .fc-tr::after { top: 0; right: 0; }
+
+  .names-frame .fc-bl { bottom: -1px; left: -1px; }
+  .names-frame .fc-bl::before { bottom: 0; left: 0; }
+  .names-frame .fc-bl::after { bottom: 0; left: 0; }
+
+  .names-frame .fc-br { bottom: -1px; right: -1px; }
+  .names-frame .fc-br::before { bottom: 0; right: 0; }
+  .names-frame .fc-br::after { bottom: 0; right: 0; }
+
+  .family-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .family-side { text-align: center; }
+
+  .family-side .role {
+    font-size: 12px;
+    color: var(--warm-gray);
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  .family-side .person-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .ampersand {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== EVENT DETAILS ===== */
+  .event-details {
+    background: #fff;
+  }
+
+  .detail-item { margin: 24px 0; }
+
+  .detail-item .detail-label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .detail-item .detail-value {
+    font-size: 17px;
+    color: var(--dark);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .detail-item .detail-sub {
+    font-size: 13px;
+    color: var(--warm-gray);
+    margin-top: 4px;
+  }
+
+  .dday-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 20px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(156,160,166,0.3);
+  }
+
+  /* ===== CALENDAR ===== */
+  .calendar-section {
+    background: linear-gradient(180deg, #EDEEF2 0%, #fff 100%);
+    padding: 40px 20px;
+  }
+
+  .mini-calendar {
+    max-width: 320px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border: 1px solid var(--gold-pale);
+  }
+
+  .cal-header {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    font-size: 13px;
+  }
+
+  .cal-day-name {
+    color: var(--warm-gray);
+    font-size: 11px;
+    padding: 6px 0;
+    text-align: center;
+  }
+
+  .cal-day-name:first-child { color: #C0392B; }
+
+  .cal-day {
+    padding: 6px 0;
+    text-align: center;
+    color: #3E4250;
+    border-radius: 50%;
+    font-size: 13px;
+  }
+
+  .cal-day.empty { visibility: hidden; }
+  .cal-day.sun { color: #C0392B; }
+
+  .cal-day.highlight {
+    background: var(--gold);
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(156, 160, 166, 0.3);
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .cal-day.highlight::after {
+    content: 'D-day';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ===== MAP SECTION ===== */
+  .map-section {
+    background: #fff;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #fff;
+    border: 1px solid var(--gold-pale);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--dark);
+    font-family: 'Gowun Batang', serif;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .nav-btn:hover {
+    border-color: var(--gold-light);
+    box-shadow: 0 4px 16px rgba(156,160,166,0.15);
+  }
+
+  .nav-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .nav-btn .nav-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .nav-btn .nav-icon img {
+    width: 100%; height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .nav-btn .nav-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .nav-btn .nav-text .nav-label {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .nav-btn .nav-text .nav-sub {
+    font-size: 11px;
+    color: var(--warm-gray);
+  }
+
+  .address-text {
+    font-size: 14px;
+    color: #3E4250;
+    line-height: 1.8;
+    margin-top: 16px;
+  }
+
+  .address-text .addr-detail {
+    font-size: 12px;
+    color: var(--warm-gray);
+  }
+
+  /* ===== STORY SECTION ===== */
+  .story-section {
+    padding: 50px 20px;
+    background: linear-gradient(180deg, var(--cream), #EDEEF2, var(--cream));
+  }
+
+  .story-title {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .story-subtitle {
+    font-size: 18px;
+    color: var(--dark);
+    font-weight: 500;
+    margin-bottom: 36px;
+  }
+
+  .story-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .story-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold-light), var(--gold-light), transparent);
+    transform: translateX(-50%);
+  }
+
+  .story-item {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .story-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .story-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--gold-light);
+    border: 2px solid var(--cream);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 0 3px rgba(192,196,202,0.3);
+  }
+
+  .story-card {
+    margin-top: 20px;
+    margin-bottom: 32px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .story-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-caption {
+    padding: 16px 18px;
+  }
+
+  .story-num {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .story-caption p {
+    font-size: 13px;
+    color: #3E4250;
+    line-height: 1.8;
+    word-break: keep-all;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: linear-gradient(180deg, #EDEEF2, var(--cream));
+    padding: 50px 30px 60px;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 2;
+  }
+
+  .footer .closing {
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-top: 20px;
+  }
+
+  .footer .bottom-deco {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+    margin-top: 30px;
+    border-radius: 3px;
+  }
+
+  /* ===== COPY TOAST ===== */
+  .copy-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--dark);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-family: 'Gowun Batang', serif;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .copy-toast.show {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Copy button */
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--gold-pale);
+    border-radius: 8px;
+    color: var(--warm-gray);
+    font-family: 'Gowun Batang', serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    border-color: var(--gold-light);
+    color: var(--gold);
+  }
+
+  .copy-btn:active {
+    transform: scale(0.96);
+  }
+
+  ::-webkit-scrollbar { width: 0; }
+</style>
+</head>
+<body>
+
+<!-- ===== ENVELOPE SCENE ===== -->
+<div class="envelope-scene" id="envelopeScene">
+  <div class="envelope-wrapper" id="envelopeWrapper">
+    <div class="envelope" id="envelope">
+      <div class="envelope-side-left"></div>
+      <div class="envelope-side-right"></div>
+      <div class="envelope-bottom"></div>
+      <div class="letter-preview" id="letterPreview">
+        <div class="letter-text">집 들 이</div>
+        <div class="letter-sub">초 대 장</div>
+      </div>
+    </div>
+    <div class="envelope-flap" id="envelopeFlap"></div>
+    <div class="seal" id="seal"><span>🤍</span></div>
+    <div class="tap-hint">터치하여 열기</div>
+  </div>
+</div>
+
+<!-- ===== INVITATION CARD ===== -->
+<div class="invitation-container" id="invitation">
+
+  <!-- Hero -->
+  <div class="section hero">
+    <svg class="corner-deco tl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,78 Q2,40 20,25 Q35,12 78,2" stroke="#9CA0A6" stroke-width="1.5" fill="none"/>
+      <path d="M2,60 Q10,35 30,20 Q45,10 70,5" stroke="#9CA0A6" stroke-width="1" fill="none"/>
+      <circle cx="20" cy="25" r="3" fill="#9CA0A6" opacity="0.4"/>
+      <circle cx="40" cy="12" r="2" fill="#9CA0A6" opacity="0.3"/>
+      <path d="M10,50 Q15,42 10,35" stroke="#9CA0A6" stroke-width="0.8" fill="none"/>
+      <path d="M25,15 Q32,18 28,25" stroke="#9CA0A6" stroke-width="0.8" fill="none"/>
+    </svg>
+    <svg class="corner-deco tr" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,78 Q2,40 20,25 Q35,12 78,2" stroke="#9CA0A6" stroke-width="1.5" fill="none"/>
+      <path d="M2,60 Q10,35 30,20 Q45,10 70,5" stroke="#9CA0A6" stroke-width="1" fill="none"/>
+      <circle cx="20" cy="25" r="3" fill="#9CA0A6" opacity="0.4"/>
+      <circle cx="40" cy="12" r="2" fill="#9CA0A6" opacity="0.3"/>
+      <path d="M10,50 Q15,42 10,35" stroke="#9CA0A6" stroke-width="0.8" fill="none"/>
+      <path d="M25,15 Q32,18 28,25" stroke="#9CA0A6" stroke-width="0.8" fill="none"/>
+    </svg>
+    <svg class="corner-deco bl" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,78 Q2,40 20,25 Q35,12 78,2" stroke="#9CA0A6" stroke-width="1.5" fill="none"/>
+      <path d="M2,60 Q10,35 30,20 Q45,10 70,5" stroke="#9CA0A6" stroke-width="1" fill="none"/>
+      <circle cx="20" cy="25" r="3" fill="#9CA0A6" opacity="0.4"/>
+      <circle cx="40" cy="12" r="2" fill="#9CA0A6" opacity="0.3"/>
+    </svg>
+    <svg class="corner-deco br" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2,78 Q2,40 20,25 Q35,12 78,2" stroke="#9CA0A6" stroke-width="1.5" fill="none"/>
+      <path d="M2,60 Q10,35 30,20 Q45,10 70,5" stroke="#9CA0A6" stroke-width="1" fill="none"/>
+      <circle cx="20" cy="25" r="3" fill="#9CA0A6" opacity="0.4"/>
+      <circle cx="40" cy="12" r="2" fill="#9CA0A6" opacity="0.3"/>
+    </svg>
+
+    <div class="fade-up">
+      <div class="label">H O U S E W A R M I N G</div>
+      <div class="ornament">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+      <h1 class="main-title">
+        마음은 가볍게,<br>
+        양손은 무겁게
+      </h1>
+      <div class="ornament">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Greeting -->
+  <div class="section greeting">
+    <div class="fade-up">
+      <p>
+        농담입니다 :)<br><br>
+        영규와 에린의 집들이에 초대합니다.<br><br>
+        Welcome to our house<br>
+        mah bruhhhhh
+      </p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Names -->
+  <div class="section names-section">
+    <div class="fade-up">
+      <div class="names-frame">
+        <div class="frame-corner fc-tl"></div>
+        <div class="frame-corner fc-tr"></div>
+        <div class="frame-corner fc-bl"></div>
+        <div class="frame-corner fc-br"></div>
+        <div class="ornament" style="margin-top:0;">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <div class="family-row" style="flex-direction:column; gap:8px;">
+          <div class="role" style="margin-bottom:4px;">1st guests</div>
+          <div style="display:flex; align-items:center; justify-content:center; gap:40px;">
+            <div class="family-side">
+              <div class="person-name">진우</div>
+            </div>
+            <div class="ampersand">&</div>
+            <div class="family-side">
+              <div class="person-name">수진</div>
+            </div>
+          </div>
+        </div>
+        <div class="ornament" style="margin-bottom:0;">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Event Details -->
+  <div class="section event-details">
+    <div class="fade-up">
+      <div class="detail-item">
+        <div class="detail-label">D A T E</div>
+        <div class="detail-value">2026년 4월 4일 토요일</div>
+        <div class="detail-sub">오후 5시</div>
+        <div class="dday-badge" id="ddayBadge"></div>
+      </div>
+      <div class="ornament">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">P L A C E</div>
+        <div class="detail-value">선사현대아파트</div>
+        <div class="detail-sub">104동 1401호<br>서울 강동구 상암로 11</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Calendar -->
+  <div class="section calendar-section">
+    <div class="fade-up">
+      <div class="mini-calendar">
+        <div class="cal-header">2026. 04</div>
+        <div class="cal-grid">
+          <div class="cal-day-name">일</div>
+          <div class="cal-day-name">월</div>
+          <div class="cal-day-name">화</div>
+          <div class="cal-day-name">수</div>
+          <div class="cal-day-name">목</div>
+          <div class="cal-day-name">금</div>
+          <div class="cal-day-name">토</div>
+
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day">1</div>
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day highlight">4</div>
+
+          <div class="cal-day sun">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+          <div class="cal-day">9</div>
+          <div class="cal-day">10</div>
+          <div class="cal-day">11</div>
+
+          <div class="cal-day sun">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day">14</div>
+          <div class="cal-day">15</div>
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day">18</div>
+
+          <div class="cal-day sun">19</div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+          <div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+          <div class="cal-day">25</div>
+
+          <div class="cal-day sun">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+          <div class="cal-day">30</div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Map -->
+  <div class="section map-section">
+    <div class="fade-up">
+      <div class="detail-item">
+        <div class="detail-label">L O C A T I O N</div>
+      </div>
+      <div class="address-text">
+        선사현대아파트 104동 1401호<br>
+        서울 강동구 상암로 11<br>
+        <span class="addr-detail">104동 1401호</span>
+      </div>
+      <button class="copy-btn" id="copyAddr" aria-label="주소 복사">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        주소 복사
+      </button>
+      <div class="nav-buttons">
+        <a href="tmap://route?goalname=%EC%84%A0%EC%82%AC%ED%98%84%EB%8C%80%EC%95%84%ED%8C%8C%ED%8A%B8&goalx=127.1280&goaly=37.5488" onclick="setTimeout(function(){location.href='https://tmap.life/'},1500)" class="nav-btn" aria-label="티맵으로 길안내 시작">
+          <div class="nav-icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="th" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF4DA6"/><stop offset="50%" stop-color="#A855F7"/><stop offset="100%" stop-color="#2DD4BF"/></linearGradient>
+                <linearGradient id="tv" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="#2DD4BF"/><stop offset="40%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#0066FF"/></linearGradient>
+              </defs>
+              <rect width="100" height="100" rx="22" fill="#fff"/>
+              <rect x="10" y="14" width="80" height="18" rx="2" fill="url(#th)"/>
+              <path d="M40,14 L60,14 L60,74 C60,80 54,86 50,86 C46,86 40,80 40,74 Z" fill="url(#tv)"/>
+            </svg>
+          </div>
+          <div class="nav-text">
+            <span class="nav-label">티맵</span>
+            <span class="nav-sub">길안내 시작하기</span>
+          </div>
+        </a>
+        <a href="nmap://route/car?dlat=37.5488&dlng=127.1280&dname=%EC%84%A0%EC%82%AC%ED%98%84%EB%8C%80%EC%95%84%ED%8C%8C%ED%8A%B8&appname=invitation" onclick="setTimeout(function(){location.href='https://map.naver.com/'},1500)" class="nav-btn" aria-label="네이버 지도로 길안내 시작">
+          <div class="nav-icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" rx="22" fill="#F0F4F0"/>
+              <path d="M50,12 C38,12 28,20 28,30 C28,44 50,62 50,62 C50,62 72,44 72,30 C72,20 62,12 50,12 Z" fill="#03C75A"/>
+              <path d="M50,62 L72,30 L72,30 L85,72 L50,62Z" fill="#03C75A" opacity="0.4"/>
+              <rect x="56" y="68" width="34" height="10" rx="2" fill="#3F5BF6"/>
+              <text x="50" y="38" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="22" font-weight="800">N</text>
+            </svg>
+          </div>
+          <div class="nav-text">
+            <span class="nav-label">네이버 지도</span>
+            <span class="nav-sub">길안내 시작하기</span>
+          </div>
+        </a>
+        <a href="kakaomap://route?ep=37.5488,127.1280&by=CAR" onclick="setTimeout(function(){location.href='https://map.kakao.com/'},1500)" class="nav-btn" aria-label="카카오맵으로 길안내 시작">
+          <div class="nav-icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" rx="22" fill="#FEE500"/>
+              <path d="M50,22 C33,22 19,32.5 19,45.5 C19,54 25,61.3 34,65.5 L31,78 C30.8,79 32,79.5 32.8,78.8 L48,68.5 C48.7,68.5 49.3,68.6 50,68.6 C67,68.6 81,58 81,45.5 C81,32.5 67,22 50,22 Z" fill="#3C1E1E"/>
+            </svg>
+          </div>
+          <div class="nav-text">
+            <span class="nav-label">카카오맵</span>
+            <span class="nav-sub">길안내 시작하기</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Story: Our New Home -->
+  <div class="section story-section">
+    <div class="fade-up">
+      <div class="story-title">O U R &nbsp; S T O R Y</div>
+      <div class="story-subtitle">우리의 만남, 7컷 스토리</div>
+    </div>
+    <div class="story-timeline">
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/1.jpg" alt="1컷">
+          <div class="story-caption">
+            <div class="story-num">01</div>
+            <p>각자의 자리에서 일에 열중하던 영규와 에린, 우리의 평범했던 일상.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/2.jpg" alt="2컷">
+          <div class="story-caption">
+            <div class="story-num">02</div>
+            <p>복잡한 에어컨 리모컨 앞, 우연이 만들어낸 풋풋한 첫 만남.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/3.jpg" alt="3컷">
+          <div class="story-caption">
+            <div class="story-num">03</div>
+            <p>토플 시험이 끝나고 찾아간 카페, 처음으로 둘만의 사적인 시간을 갖게 된 날.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/4.jpg" alt="4컷">
+          <div class="story-caption">
+            <div class="story-num">04</div>
+            <p>맛있는 피자와 함께 시간 가는 줄 모르고 웃으며 대화가 잘 통했던 저녁.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/5.jpg" alt="5컷">
+          <div class="story-caption">
+            <div class="story-num">05</div>
+            <p>밤이 새는 줄도 모르고 이어졌던 설렘 가득한 카톡.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/6.jpg" alt="6컷">
+          <div class="story-caption">
+            <div class="story-num">06</div>
+            <p>마침내 연인이 되어, 두 손을 꼭 잡고 걷는 행복하고 눈부신 데이트.</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-item">
+        <div class="story-dot"></div>
+        <div class="story-card">
+          <img src="how-we-met-asset/7.jpg" alt="7컷">
+          <div class="story-caption">
+            <div class="story-num">07</div>
+            <p>있는 그대로의 모습으로 전한 진심 어린 프로포즈, 그리고 행복한 "Yes!".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Footer -->
+  <div class="section footer">
+    <div class="fade-up">
+      <p>
+        오시는 길이 어렵더라도<br>
+        알아서 오십시오
+      </p>
+      <div class="ornament">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+      <div class="closing">JQ & Erin 드림</div>
+      <div class="ornament" style="margin-top:24px;">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+      <div class="bottom-deco"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Copy Toast -->
+<div class="copy-toast" id="copyToast">주소가 복사되었습니다</div>
+
+<script>
+(function() {
+  const scene = document.getElementById('envelopeScene');
+  const flap = document.getElementById('envelopeFlap');
+  const seal = document.getElementById('seal');
+  const letter = document.getElementById('letterPreview');
+  const invitation = document.getElementById('invitation');
+  const wrapper = document.getElementById('envelopeWrapper');
+  let opened = false;
+
+  wrapper.addEventListener('click', function() {
+    if (opened) return;
+    opened = true;
+
+    seal.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    seal.style.opacity = '0';
+    seal.style.transform = 'translate(-50%, -50%) scale(0.5)';
+
+    setTimeout(() => { flap.classList.add('open'); }, 500);
+    setTimeout(() => {
+      var env = document.getElementById('envelope');
+      env.style.overflow = 'visible';
+      env.style.zIndex = '5';
+      env.style.boxShadow = 'none';
+      letter.classList.add('rise');
+    }, 1600);
+    setTimeout(() => {
+      scene.classList.add('hidden');
+      invitation.classList.add('visible');
+    }, 3000);
+  });
+
+  // D-Day counter (KST)
+  const eventDate = new Date('2026-04-04T00:00:00+09:00');
+  const now = new Date();
+  const kstNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const kstToday = new Date(kstNow.getFullYear(), kstNow.getMonth(), kstNow.getDate());
+  const diffDays = Math.ceil((eventDate - kstToday) / (1000 * 60 * 60 * 24));
+  const ddayEl = document.getElementById('ddayBadge');
+  if (diffDays > 0) {
+    ddayEl.textContent = 'D - ' + diffDays;
+  } else if (diffDays === 0) {
+    ddayEl.textContent = 'D - DAY';
+  } else {
+    ddayEl.style.display = 'none';
+  }
+
+  // Scroll fade-in
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Story items scroll animation
+  const storyItems = document.querySelectorAll('.story-item');
+  const storyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        storyObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -30px 0px'
+  });
+  storyItems.forEach(el => storyObserver.observe(el));
+
+  // Copy address
+  document.getElementById('copyAddr').addEventListener('click', function() {
+    const addr = '서울 강동구 상암로 11 선사현대아파트 104동 1401호';
+    navigator.clipboard.writeText(addr).then(() => {
+      const toast = document.getElementById('copyToast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
